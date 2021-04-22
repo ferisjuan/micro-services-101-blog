@@ -1,16 +1,19 @@
 import express from 'express'
+
+import cors from 'cors'
 import { randomBytes } from 'crypto'
 
 const posts = {}
+
 const app = express()
-
 app.use(express.json())
+app.use(cors())
 
-app.get('/', (req, res) => {
+app.get('/posts', (req, res) => {
 	res.send(posts)
 })
 
-app.post('/', (req, res) => {
+app.post('/posts', (req, res) => {
 	const id = randomBytes(4).toString('hex')
 	const { title } = req.body
 
@@ -20,5 +23,5 @@ app.post('/', (req, res) => {
 })
 
 app.listen(4000, () => {
-	console.log('Listening on 4000')
+	console.log('Posts is listening on 4000')
 })
