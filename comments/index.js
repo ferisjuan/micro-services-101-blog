@@ -1,3 +1,4 @@
+import axios from 'axios'
 import express from 'express'
 
 import cors from 'cors'
@@ -13,16 +14,24 @@ app.get('/posts/:id/comments', (req, res) => {
 	res.send(commentsByPostId[req.params.id] || [])
 })
 
-app.post('/posts/:id/comments', (req, res) => {
+app.post('/posts/:id/comments', async (req, res) => {
 	const commentId = randomBytes(4).toString('hex')
 	const { content } = req.body
 	const { id: postId } = req.params
 
 	const comments = commentsByPostId[postId] || []
-
-	comments.push({ id: commentId, content })
+	const comment = { id: commentId, content }
+	comments.push(comment)
 
 	commentsByPostId[postId] = comments
+
+	await axios.post('http://localhost:4005/events', {
+		type: 'CommentCreated',
+		data: {
+			...comment,
+			postId,
+		},
+	})
 
 	res.status(201).send(comments)
 })
