@@ -14,8 +14,10 @@ app.post('/events', async (req, res) => {
 			? 'rejected'
 			: 'approved'
 
+		console.log(status)
+
 		await axios.post('http://localhost:4005/events', {
-			type: 'ModeratedComment',
+			type: 'CommentModerated',
 			data: {
 				id: data.id,
 				postId: data.postId,
