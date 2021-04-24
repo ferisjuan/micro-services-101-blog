@@ -25,15 +25,18 @@ app.post('/posts/:id/comments', async (req, res) => {
 
 	commentsByPostId[postId] = comments
 
-	await axios.post('http://localhost:4005/events', {
-		type: 'CommentCreated',
-		data: {
-			...comment,
-			postId,
-		},
-	})
-
-	res.status(201).send(comments)
+	try {
+		await axios.post('http://localhost:4005/events', {
+			type: 'CommentCreated',
+			data: {
+				...comment,
+				postId,
+			},
+		})
+		res.status(201).send(comments)
+	} catch (error) {
+		console.log(error.message)
+	}
 })
 
 app.post('/events', (req, res) => {
