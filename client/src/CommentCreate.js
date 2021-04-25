@@ -22,6 +22,7 @@ export default ({ postId }) => {
 					<input
 						className='form-control'
 						onChange={e => setContent(e.target.value)}
+						value={content}
 					/>
 				</div>
 				<button className='btn btn-primary'>Submit</button>
