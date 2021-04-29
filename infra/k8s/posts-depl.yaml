@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  # tell the deployment tofind all the pods with the label app: posts
+  selector:
+    matchLabels:
+      app: posts
+
+  # speficy the exact configuration of a pod we want the deployment to create
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: ferisjuan/posts:0.0.1
