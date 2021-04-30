@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: jferis/event-bus\
+          image: jferis/event-bus
 ---
 apiVersion: v1
 kind: Service
