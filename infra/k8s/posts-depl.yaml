@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: posts
+        app: posts # apply label to pods
     spec:
       containers:
         - name: posts
