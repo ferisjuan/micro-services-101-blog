@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
         - name: posts
-          image: ferisjuan/posts:0.0.1
+          image: ferisjuan/posts # k8s asumes we are using the latest version
