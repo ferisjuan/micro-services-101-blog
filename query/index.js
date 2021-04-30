@@ -28,7 +28,7 @@ app.listen(4002, async () => {
 
 async function handleGetAllEventsFromBus() {
 	try {
-		const res = await axios.get('http://localhost:4005/events')
+		const res = await axios.get('http://event-bus-srv:4005/events')
 
 		for (const event of res.data) {
 			console.log('Processing even:', event.type)
