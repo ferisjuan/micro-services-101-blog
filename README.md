@@ -19,7 +19,13 @@ kubectl krew update
 kubectl krew install ingress-ngnix
 ```
 
-### edit your hosts files to make posts.com redirect to 127.0.0.1 for dev
+### Edit your /etc/hosts files to make posts.com redirect to 127.0.0.1
+
+### Install (skaffold | skafold.dev) then in a term on the root level:
+
+```
+skafold dev
+```
 
 ## Run the following commands to start k8s deployments
 
