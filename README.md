@@ -34,4 +34,5 @@ kubectl apply -f .
 cd [microservice_name]
 docker build -t [docker_username]/[microservice_name] .
 docker push [docker_username]/[microservice_name]
+kubectl rollout restart deployment [-depl]
 ```
