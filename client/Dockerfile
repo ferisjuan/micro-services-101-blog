@@ -17,5 +17,7 @@ RUN npm install
 # if a project file changes
 COPY ./ ./
 
+ENV CI=true
+
 # Default command
 CMD ["npm", "start"]
